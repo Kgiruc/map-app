@@ -2,7 +2,8 @@ import {MapContainer,TileLayer,Marker,Popup} from "react-leaflet";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css"
 import "leaflet-control-geocoder/dist/Control.Geocoder.js"
 import L from "leaflet";
-import LeafleftGeo from "./LeafleftGeo";
+
+import LeafletRouting from "./LeafletRouting";
 
 
 function Map() {
@@ -13,7 +14,8 @@ function Map() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <LeafleftGeo />
+            {/* <LeafleftGeo /> */}
+            <LeafletRouting />
         </MapContainer>
     )
 }
