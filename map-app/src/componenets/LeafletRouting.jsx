@@ -9,8 +9,8 @@ function LeafletRouting() {
     useEffect(()=>{
         L.Routing.control({
             waypoints: [
-              L.latLng(57.74, 11.94),
-              L.latLng(57.6792, 11.949)
+              L.latLng(52.215933,19.134422),
+              L.latLng(54.4109754,18.600087546907808)
             ],
             lineOptions:{
                 styles: [
@@ -22,7 +22,9 @@ function LeafletRouting() {
                 ]
             },
             routeWhileDragging: false,
-            geocoder: L.Control.Geocoder.nominatim(),
+            geocoder: L.Control.Geocoder.nominatim(() => {
+              console.log(e)
+            }),
           }).addTo(map);
     },[])
   return null

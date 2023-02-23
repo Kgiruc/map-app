@@ -10,7 +10,7 @@ function SearchMenu() {
   const [searchText, setSearchText] = useState("polska")
   const [start, setStart] = useState([{}])
 
-  function czesc() {
+
   useEffect(() => {
     fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
       .then(res => res.json())
@@ -19,8 +19,8 @@ function SearchMenu() {
         setStart(data)
       })
       .catch(err => console.log(err))
-  }, [])
-}
+  }, [searchText])
+
 
   return (
     <div className="">
@@ -35,12 +35,11 @@ function SearchMenu() {
           />
         </label>
       </form>
-      <button className="border-2"
-      onClick={czesc}
-      >Go</button>
-    <p>{start[0].lat}</p>
-    <p>{start[0].lon}</p>
-    <p>{searchText}</p>
+      <button className="border-2">Go</button>
+      {start.length > 0 ? (<><p>{start[0].lat}</p>
+      <p>{start[0].lon}</p>
+      <p>{searchText}</p></>
+      ) : (<p>podaj adres</p>)}
     </div>
   )
 }
