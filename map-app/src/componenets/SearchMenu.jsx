@@ -1,48 +1,46 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+
+
+const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?"
+//https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=json&addressdetails=1
+
 
 function SearchMenu() {
-  const [start, setStart] = useState({
-    ulica: '',
-    numer: '',
-    kraj: '',
-  })
+  const [searchText, setSearchText] = useState("polska")
+  const [start, setStart] = useState([{}])
+
+  function czesc() {
+  useEffect(() => {
+    fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setStart(data)
+      })
+      .catch(err => console.log(err))
+  }, [])
+}
+
   return (
-    <div className="text-3xl font-bold ">
+    <div className="">
       <form>
         <label>
-          Ulica:
+          Search:
           <input
+            className="border-4"
             type="text"
-            value={start.ulica}
-            onChange={e => setStart({...start, ulica: e.target.value})}
-             />
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
+          />
         </label>
-        <label>
-          numer:
-          <input
-            type="text"
-            value={start.numer}
-            onChange={e => setStart({...start, numer: e.target.value})}
-             />
-        </label>
-        <label>
-          kraj:
-          <input
-            type="text"
-            value={start.kraj}
-            onChange={e => setStart({...start, kraj: e.target.value})}
-             />
-        </label>
-        <Link to={
-          {
-            pathname: "test",
-            start: start 
-          }
-        }>
-          Mapa
-        </Link>
       </form>
+      <button className="border-2"
+      onClick={czesc}
+      >Go</button>
+    <p>{start[0].lat}</p>
+    <p>{start[0].lon}</p>
+    <p>{searchText}</p>
     </div>
   )
 }
