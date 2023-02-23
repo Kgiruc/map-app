@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -6,10 +7,9 @@ const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?"
 //https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=json&addressdetails=1
 
 
-function SearchMenu() {
+function SearchMenu({ setResponse }) {
   const [searchText, setSearchText] = useState("polska")
   const [start, setStart] = useState([{}])
-
 
   useEffect(() => {
     fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
@@ -22,23 +22,29 @@ function SearchMenu() {
   }, [searchText])
 
 
+
+
   return (
+
     <div className="">
-      <form>
-        <label>
-          Search:
-          <input
-            className="border-4"
-            type="text"
-            value={searchText}
-            onChange={e => setSearchText(e.target.value)}
-          />
-        </label>
-      </form>
-      <button className="border-2">Go</button>
+      <label>
+        Search:
+        <input
+          className="border-4"
+          type="text"
+          value={searchText}
+          onChange={e => setSearchText(e.target.value)}
+        />
+      </label>
+      <Link className="border-4"
+        to="/map"
+        state={{data: start}}
+        > jazda
+      </Link>
+
       {start.length > 0 ? (<><p>{start[0].lat}</p>
-      <p>{start[0].lon}</p>
-      <p>{searchText}</p></>
+        <p>{start[0].lon}</p>
+        <p>{searchText}</p></>
       ) : (<p>podaj adres</p>)}
     </div>
   )

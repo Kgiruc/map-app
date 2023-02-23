@@ -3,8 +3,11 @@ import L from "leaflet"
 import "leaflet-routing-machine"
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css"
 import { useMap } from "react-leaflet"
+import { useLocation } from "react-router-dom"
 
 function LeafletRouting() {
+    const location = useLocation()
+    console.log(location.state.data[0].lon)
     const map = useMap();
     useEffect(()=>{
         L.Routing.control({
