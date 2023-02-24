@@ -7,13 +7,13 @@ import { useLocation } from "react-router-dom"
 
 function LeafletRouting() {
     const location = useLocation()
-    console.log(location.state.data[0].lon)
+    console.log(location)
     const map = useMap();
     useEffect(()=>{
         L.Routing.control({
             waypoints: [
-              L.latLng(52.215933,19.134422),
-              L.latLng(54.4109754,18.600087546907808)
+              L.latLng(location.state.start.start[0].lat,location.state.start.start[0].lon),
+              L.latLng(location.state.meta.meta[0].lat,location.state.meta.meta[0].lon)
             ],
             lineOptions:{
                 styles: [
@@ -26,7 +26,6 @@ function LeafletRouting() {
             },
             routeWhileDragging: false,
             geocoder: L.Control.Geocoder.nominatim(() => {
-              console.log(e)
             }),
           }).addTo(map);
     },[])

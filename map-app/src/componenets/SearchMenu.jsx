@@ -1,53 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import StartSearch from "./StartSearch";
+import MetaSearch from "./MetaSearch";
 
-
-const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?"
-//https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=json&addressdetails=1
-
-
-function SearchMenu({ setResponse }) {
-  const [searchText, setSearchText] = useState("polska")
-  const [start, setStart] = useState([{}])
-
-  useEffect(() => {
-    fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setStart(data)
-      })
-      .catch(err => console.log(err))
-  }, [searchText])
-
-
-
+function SearchMenu() {
+    const [startdate, setStartdate] = useState({})
+    const [metadate, setMetadate] = useState({})
 
   return (
-
-    <div className="">
-      <label>
-        Search:
-        <input
-          className="border-4"
-          type="text"
-          value={searchText}
-          onChange={e => setSearchText(e.target.value)}
-        />
-      </label>
-      <Link className="border-4"
+    <div>
+        <StartSearch  setStartdate= {setStartdate}/>
+        <MetaSearch  setMetadate= {setMetadate}/>
+        <Link className="border-4"
         to="/map"
-        state={{data: start}}
+        state={{
+            start: startdate,
+            meta: metadate,
+        }}
         > jazda
       </Link>
-
-      {start.length > 0 ? (<><p>{start[0].lat}</p>
-        <p>{start[0].lon}</p>
-        <p>{searchText}</p></>
-      ) : (<p>podaj adres</p>)}
     </div>
   )
 }
 
-export default SearchMenu;
+export default SearchMenu
