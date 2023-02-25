@@ -18,7 +18,7 @@ function SearchMenu() {
             start: startdate,
             meta: metadate,
         }}
-        > jazda
+        > Mapa
       </Link>
     </div>
   )

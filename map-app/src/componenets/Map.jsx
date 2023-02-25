@@ -4,11 +4,13 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.js"
 import L from "leaflet";
 
 import LeafletRouting from "./LeafletRouting";
+import MatrixDistance from "./MatrixDistance";
 
 
 function Map() {
     const position = [51.505, -0.09]
     return (
+        <div>
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -16,6 +18,8 @@ function Map() {
             />
             <LeafletRouting />
         </MapContainer>
+        <MatrixDistance />
+        </div>
     )
 }
 
