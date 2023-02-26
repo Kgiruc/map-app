@@ -1,4 +1,5 @@
-import {MapContainer,TileLayer,Marker,Popup} from "react-leaflet";
+import {MapContainer,TileLayer} from "react-leaflet";
+import { Link } from "react-router-dom";
 import L from "leaflet";
 
 import LeafletRouting from "./LeafletRouting";
@@ -17,6 +18,10 @@ function Map() {
             <LeafletRouting />
         </MapContainer>
         <MatrixDistance />
+        <Link
+        to ="/">
+            dane
+        </Link>
         </div>
     )
 }

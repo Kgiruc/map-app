@@ -29,7 +29,7 @@ function DistanceResult({ distance }) {
                     <li>z podatkiem :{all * 10 / 100 + all}zł</li>
                 </ul>
                 <button
-                className='border-2 border-black bg-blue-200' 
+                className='absolute border-2 border-black bg-blue-200' 
                 onClick={handlePrint}>
                 Print pdf
             </button>
