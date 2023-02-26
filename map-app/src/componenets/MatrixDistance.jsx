@@ -6,7 +6,6 @@ import DistanceResult from './DistanceResult'
 function MatrixDistance() {
     const [distance, setDistance] = useState([{}])
     const location = useLocation()
-    console.log(location)
     
     const URL_DISTANCE = `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${location.state.start.start[0].lat},${location.state.start.start[0].lon}&destinations=${location.state.meta.meta[0].lat},${location.state.meta.meta[0].lon}&key=hEhFMQF6wuFOWDSYU4d2XBbwbwODF`
 
@@ -14,7 +13,6 @@ function MatrixDistance() {
         fetch(URL_DISTANCE)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setDistance(data)
             })
             .catch(err => console.log(err.message))
@@ -24,7 +22,7 @@ function MatrixDistance() {
     return (
         distance.rows ? (
             <DistanceResult distance = {distance}/>) :
-            (<p>loading..</p>)
+            (<p>loading...</p>)
     )
 
 }

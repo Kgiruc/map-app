@@ -21,19 +21,29 @@ function SearchMenu({ setMetadate }) {
 
 
   return (
-    <div className="">
-      <label>
-        meta:
+    <div className="flex flex-col w-100%">
+      <label className=" flex flex-col text-lg">
+        Adres docelowy:
         <input
-          className="border-4"
+          className="border-4 rounded-xl hover:bg-yellow-100 p-2 w-[60vw] text-black"
           type="text"
           value={searchText}
           onChange={e => { setSearchText(e.target.value) }}
         />
       </label>
       {meta.length > 0 ?
-        (<button onClick={() =>  setMetadate({meta}) }>dalej</button>) :
-        (<p>podaj adres końcowy</p>)}
+        (<div>
+          <p className="bg-white text-black rounded-md p-1 mt-0 max-w-[60vw]">
+            {meta[0].display_name}
+          </p>
+
+          <button 
+          className="mt-2 border-2 border-green-500 rounded-md p-1 pl-2 pr-2
+          hover:bg-white hover:text-black"
+          onClick={() => setMetadate({ meta })}>potwierdzam</button>
+        </div>)
+        :
+        (<p className="text-sm">podaj dobry adres końcowy</p>)}
     </div>
   )
 }

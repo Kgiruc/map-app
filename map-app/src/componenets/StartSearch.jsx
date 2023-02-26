@@ -22,11 +22,11 @@ function SearchMenu({ setStartdate }) {
 
 
   return (
-    <div className="">
-      <label>
-        Start:
+    <div className="flex flex-col w-100%">
+      <label className=" flex flex-col text-lg">
+        Addres początkowy:
         <input
-          className="border-4"
+          className="border-4 rounded-xl hover:bg-yellow-100 p-2 w-[60vw] text-black"
           type="text"
           value={searchText}
           onChange={e => { setSearchText(e.target.value) }}
@@ -34,12 +34,20 @@ function SearchMenu({ setStartdate }) {
       </label>
       {start.length > 0 ?
         (<div>
-        <button onClick={() =>  {setStartdate({start},)} }>dalej</button>
-        <p>{start[0].display_name}</p>
-        </div>) 
-        : 
-        (<p>podaj adres dobry początkowy</p>)}
-        
+          <p className="bg-white text-black rounded-md p-1 mt-0 max-w-[60vw]">
+            {start[0].display_name}
+          </p>
+          
+          <button
+            className="mt-2 border-2 border-green-500 rounded-md p-1 pl-2 pr-2
+            hover:bg-white hover:text-black"
+            onClick={() => { setStartdate({ start }) }}>
+            potwierdzam</button>
+        </div>
+        )
+        :
+        (<p className="text-sm">podaj dobry adres początkowy</p>)}
+
     </div>
   )
 }

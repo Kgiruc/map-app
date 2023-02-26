@@ -9,8 +9,8 @@ import MatrixDistance from "./MatrixDistance";
 function Map() {
     const position = [51.505, -0.09]
     return (
-        <div className="flex flex-row">
-        <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+        <div className="flex flex-col bg-gray-400 z-0">
+        <MapContainer className="w-100% h-[70vh]" center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -19,8 +19,10 @@ function Map() {
         </MapContainer>
         <MatrixDistance />
         <Link
+        className=" text-sm absolute bottom-2 border-2 p-2 rounded-2xl left-4 z-10
+        hover:bg-white"
         to ="/">
-            dane
+            zmien dane
         </Link>
         </div>
     )
