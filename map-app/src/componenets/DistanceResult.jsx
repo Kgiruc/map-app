@@ -45,7 +45,7 @@ function DistanceResult({ distance }) {
                                 Podaj cenę za kilometr:
                                 <input
                                     className="border-4 text-center"
-                                    type="text"
+                                    type="number"
                                     value={numbers}
                                     onChange={e => setNumbers(e.target.value)}
                                 />
