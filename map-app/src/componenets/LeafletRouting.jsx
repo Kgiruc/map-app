@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom"
 
 function LeafletRouting() {
     const location = useLocation()
-    console.log(location)
     const map = useMap();
     useEffect(()=>{
         L.Routing.control({

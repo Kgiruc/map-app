@@ -12,7 +12,6 @@ function SearchMenu({ setStartdate }) {
     fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setStart(data)
       })
       .catch(err => console.log(err.message))
@@ -46,7 +45,7 @@ function SearchMenu({ setStartdate }) {
         </div>
         )
         :
-        (<p className="text-sm">podaj dobry adres początkowy</p>)}
+        (<p className="text-xs">podaj i potwierdź dobry adres początkowy</p>)}
 
     </div>
   )

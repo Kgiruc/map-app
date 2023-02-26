@@ -11,7 +11,6 @@ function SearchMenu({ setMetadate }) {
     fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setMeta(data)
       })
       .catch(err => console.log(err.message))
@@ -43,7 +42,7 @@ function SearchMenu({ setMetadate }) {
           onClick={() => setMetadate({ meta })}>potwierdzam</button>
         </div>)
         :
-        (<p className="text-sm">podaj dobry adres końcowy</p>)}
+        (<p className="text-xs">podaj i potwierdź dobry adres końcowy</p>)}
     </div>
   )
 }
