@@ -1,6 +1,4 @@
 import {MapContainer,TileLayer,Marker,Popup} from "react-leaflet";
-import "leaflet-control-geocoder/dist/Control.Geocoder.css"
-import "leaflet-control-geocoder/dist/Control.Geocoder.js"
 import L from "leaflet";
 
 import LeafletRouting from "./LeafletRouting";

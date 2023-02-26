@@ -32,8 +32,13 @@ function SearchMenu({ setStartdate }) {
         />
       </label>
       {start.length > 0 ?
-        (<button onClick={() =>  setStartdate({start}) }>dalej</button>) :
-        (<p>podaj adres</p>)}
+        (<div>
+        <button onClick={() =>  setStartdate({start}) }>dalej</button>
+        <p>{start[0].display_name}</p>
+        </div>) 
+        : 
+        (<p>podaj adres początkowy</p>)}
+        
     </div>
   )
 }

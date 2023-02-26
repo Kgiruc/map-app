@@ -25,8 +25,6 @@ function LeafletRouting() {
                 ]
             },
             routeWhileDragging: false,
-            geocoder: L.Control.Geocoder.nominatim(() => {
-            }),
           }).addTo(map);
     },[])
   return null

@@ -7,7 +7,7 @@ function DistanceResult({ distance }) {
     const kilometrowka = 1.2
     const dystans = distance.rows[0].elements[0].distance.value / 1000
     const wynikdnia = Math.round((dystans / 800)) * 1000
-    const all = wynikdnia + (800 * kilometrowka)
+    const all = Math.round((wynikdnia + (dystans * kilometrowka)))
 
     return (
         <div className='bg-green-400'>
