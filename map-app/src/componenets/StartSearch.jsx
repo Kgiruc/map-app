@@ -7,6 +7,7 @@ function SearchMenu({ setStartdate }) {
   const [searchText, setSearchText] = useState("")
   const [start, setStart] = useState([{}])
 
+
   useEffect(() => {
     fetch(`${NOMINATIM_BASE_URL}q=${searchText}&format=json&addressdetails=1`)
       .then(res => res.json())
@@ -33,11 +34,11 @@ function SearchMenu({ setStartdate }) {
       </label>
       {start.length > 0 ?
         (<div>
-        <button onClick={() =>  setStartdate({start}) }>dalej</button>
+        <button onClick={() =>  {setStartdate({start},)} }>dalej</button>
         <p>{start[0].display_name}</p>
         </div>) 
         : 
-        (<p>podaj adres początkowy</p>)}
+        (<p>podaj adres dobry początkowy</p>)}
         
     </div>
   )
