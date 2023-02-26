@@ -46,6 +46,8 @@ function DistanceResult({ distance }) {
                                 <input
                                     className="border-4 text-center"
                                     type="number"
+                                    min="0"
+                                    max="50"
                                     value={numbers}
                                     onChange={e => setNumbers(e.target.value)}
                                 />
